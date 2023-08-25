@@ -10,15 +10,6 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
 
-      - name: Set up Pandoc for index orocessing
-        run: |
-          sudo apt-get install pandoc
-
-      - name: Convert README.md to index.html, add CSS
-        run: |
-          chmod +x indexprocess.sh
-          ./indexprocess.sh
-
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
         with:
@@ -53,6 +44,16 @@ jobs:
               Export_baked_notebookfile=false,
               Export_baked_state=false,
             )'
+
+      - name: Update README.md and convert to index.html, add CSS
+        run: |
+          julia -e '
+            include("notebooks/list_notebooks.jl")
+            write("README.md", updated_readme_content)
+          '
+          sudo apt-get install pandoc
+          chmod +x indexprocess.sh
+          ./indexprocess.sh
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
