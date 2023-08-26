@@ -52,8 +52,7 @@ jobs:
             write("README.md", updated_readme_content)
           '
           sudo apt-get install pandoc
-          chmod +x indexprocess.sh
-          ./indexprocess.sh
+          pandoc README.md -s -o README.html
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
