@@ -49,7 +49,6 @@ jobs:
         run: |
           julia -e '
             include("notebooks/list_notebooks.jl")
-            write("README.md", updated_readme_content)
           '
           sudo apt-get install pandoc
           pandoc README.md -s -o README.html
