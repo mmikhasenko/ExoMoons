@@ -1,8 +1,18 @@
 using Pkg
-Pkg.activate(joinpath(@__DIR__, ".."))
-Pkg.instantiate()
-# 
-using Pluto
+Pkg.activate(mktempdir())
+Pkg.add([Pkg.PackageSpec(name="PlutoSliderServer", version="0.3.2-0.3"),])
+
+# run ploto notebooks
+import PlutoSliderServer
+PlutoSliderServer.github_action(".";
+    Export_cache_dir="pluto_state_cache",
+    Export_baked_notebookfile=false,
+    Export_baked_state=false
+)
+
+
+# make index
+using PlutoSliderServer.Pluto
 
 # make sure the script is located in the notebooks folder
 # the script assumes it is a subfolder of the project
