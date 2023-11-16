@@ -1,0 +1,7 @@
+name = "ExoMoons"
+uuid = "40163b0e-3566-4fd0-a1fa-9046e0ff7bcc"
+authors = ["Mikhail Mikhasenko <mikhail.mikhasenko@cern.ch>"]
+version = "0.1.0"
+
+[deps]
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"

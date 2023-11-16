@@ -1,0 +1,3 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+ExoMoons = "40163b0e-3566-4fd0-a1fa-9046e0ff7bcc"
